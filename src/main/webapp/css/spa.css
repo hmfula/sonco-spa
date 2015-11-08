@@ -1,0 +1,23 @@
+.line {
+		stroke: orange;
+		fill:none;
+		stroke-width: 6;
+	}
+	
+	.axis path,
+	.axis line {
+		fill: none;
+		stroke: blue;
+		stroke-width: 1;
+		shape-rendering: crispEdges;
+	}
+	
+	.axis text {
+		font-size: 10px;
+		font-family: sans-serif;
+	}
+	
+	.text-label {
+		font-size: 10px;
+		font-family: sans-serif;
+	}

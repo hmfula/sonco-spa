@@ -1,0 +1,20 @@
+**/target/
+/target/
+*/target/*
+.classpath
+.project
+.settings
+.iml
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+.iml
+.idea
+.idea/
+
+**/.idea/
+/.idea/
+*/.idea/*

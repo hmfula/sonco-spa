@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>SON Digital Cockpit</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<script src="js/d3.min.js"></script>
+  <link rel="stylesheet" href="css/spa.css">
+</head>
+<body>
+
+<div class="container">
+  <h2>SON Coordinator Digital Cockpit</h2>
+  <p>SON Digital Cockpit is used to monitor and control SON functions while providing a common truth to all stakeholders.</p>
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#home">Summary</a></li>
+    <li><a href="#menu1">Trend Analysis</a></li>
+    <li><a href="#menu2">Forecast and Recommendation</a></li>
+    <li><a href="#menu3">SON Verification</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+      <h3>HOME</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+
+    </div>
+    <div id="menu1" class="tab-pane fade">
+     
+      
+
+
+  <h2><center></center></h2>
+ 
+  <div class="panel-group">
+    <div class="panel panel-default">
+      
+      <div class="panel-body" id="trend-panel"></div>
+    </div>
+
+    	<div class="panel panel-default">
+    
+      		<div class="panel-body" id="trend-table">
+  <h4>Trend Metrics</h4>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+      </tr>
+      <tr>
+        <td>Mary</td>
+        <td>Moe</td>
+        <td>mary@example.com</td>
+      </tr>
+      <tr>
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+		</div>
+
+   	 </div>
+    
+  </div>
+
+
+<p>The trend shows a change in the super KPI values over the monitored period.</p>
+
+
+
+    </div>
+    <div id="menu2" class="tab-pane fade">
+      <h3>Menu 2</h3>
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+    </div>
+    <div id="menu3" class="tab-pane fade">
+      <h3>Menu 3</h3>
+      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+    </div>
+  </div>
+    <hr>
+    <p class="act"><b>Active Tab</b>: <span></span></p>
+    <p class="prev"><b>Previous Tab</b>: <span></span></p>
+</div>
+
+<script>
+$(document).ready(function(){
+    $(".nav-tabs a").click(function(){
+        $(this).tab('show');
+    });
+    $('.nav-tabs a').on('shown.bs.tab', function(event){
+        var x = $(event.target).text();         // active tab
+        var y = $(event.relatedTarget).text();  // previous tab
+        $(".act span").text(x);
+        $(".prev span").text(y);
+    });
+});
+</script>
+<script src="js/trend.js"></script>
+</body>
+</html>
+

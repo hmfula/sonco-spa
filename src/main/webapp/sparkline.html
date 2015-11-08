@@ -1,0 +1,132 @@
+<html>
+<head>
+    <TITLE>Unity telecommunication - Prototype to consume real-time data as a  JSONArray
+         every 2 seconds</TITLE>
+
+    <style type="text/css">
+        body {
+            background-image:
+            url('http://cdn3.crunchify.com/wp-content/uploads/2013/03/Crunchify.bg_.300.png');
+        }
+    </style>
+
+
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/d3.min.js"></script>
+    <script type="text/javascript" src="js/jquery.sparkline.min.js"></script>
+    <script type="text/javascript">
+        function crunchifySparkline() {
+            $.ajax({
+                url : 'rest/service/sparklinetest',
+                dataType : "json",
+                cache : false,
+                contentType : 'application/json; charset=utf-8',
+                type : 'GET',
+                success : function(result) {
+                    var one = result.sparkData;
+                    //alert(one);
+                    consumeJSONData(one);
+
+//For testing sparkline
+                    var myvalues = [10,8,5,7,4,4,1];
+
+                    $('.dynamicsparkline').sparkline(myvalues,{type: 'bar',  fillColor: false,
+                            barColor: 'blue',
+                            changeRangeMin: 0, chartRangeMax: 10,
+
+                            disableHiddenCheck:'true',
+
+                        // height: '75px',
+                      //  width: '25px',
+                        //tooltipPrefix: 'KPI value = '
+                        tooltipFormat: "{{y:val}}",
+                        tooltipValueLookups: {"val": {myvalues: ""}}
+                    });
+
+
+                    $('.dynamicsparkline').sparkline(myvalues,
+                            {type: 'line', composite: true, fillColor: false,
+                                lineColor: 'red',
+                                changeRangeMin: 0, chartRangeMax: 10,
+                                lineWidth:1, //lineColor: '#008080',
+                                disableHiddenCheck:'true',
+                               // height: '75px',
+                               width: '25px',
+                                tooltipPrefix: 'KPI trend data point value = '});
+
+
+                }
+            });
+        }
+
+        function consumeJSONData(sparkData) {
+            console.log(sparkData);
+            for ( var i = 0; i < sparkData.length; i++) {
+                var obj = sparkData[i];
+
+                var crunchifyName;
+                var crunchifyValue;
+                for ( var key in obj) {
+                    crunchifyName = key;
+                    crunchifyValue = obj[key].toString();
+                    crunchifyValue = crunchifyValue.substr(1);
+                    crunchifyValue = crunchifyValue.substring(0,
+                            crunchifyValue.length - 1);
+
+                    var n = crunchifyValue.split(",");
+                    console.log(n);
+                    $("#" + crunchifyName).sparkline(n, {
+                        type : 'line',
+                        width : '80',
+                        height : '50',
+                        fillColor :'white'// '#eeeeee'
+                    });
+                }
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        var intervalId = 0;
+        intervalId = setInterval(crunchifySparkline, 1000);
+    </script>
+</head>
+
+<body>
+<div align="center">
+    <br> <br> SON Digital Cockpit <br>Real-time Data Analytics<br> <br>
+    <div id="result"></div>
+
+    <br>
+    <br> Sparkline One: &nbsp;&nbsp;&nbsp;&nbsp;<span id="one">.</span>
+    <br>
+    <br> Sparkline Two: &nbsp;&nbsp;&nbsp;&nbsp;<span id="two">.</span>
+    <br>
+    <br> Sparkline Three: &nbsp;&nbsp;&nbsp;&nbsp;<span id="three">.</span>
+    <br>
+    <p>
+        Sparkline with dynamic data: <span class="dynamicsparkline">Loading..</span>
+    </p>
+
+    <%--<div class="panel panel-default">--%>
+        <%--<div class="panel-body">--%>
+            <%--Panel content--%>
+        <%--</div>--%>
+        <%--<div class="panel-footer">Panel footer</div>--%>
+    <%--</div>--%>
+
+
+    <br> <br> <br>
+
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
